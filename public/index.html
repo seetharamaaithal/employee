@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html ng-app ="myApp">
+<head>
+  <title>Employee Details</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed|Slabo+27px' rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="/css/font-awesome.css" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+</head>
+  <body>
+    <header>
+    <div class="container" ng-controller ="AppCtrl"><br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><h4>Email</h4></th>
+            <th><h4>Name</h4></th>
+            <th><h4>DOB(DD/MM/YYYY)</h4></th>
+            <th><h4>Gender</h4></th>
+            <th><h4>Department</h4></th>
+            <th><h4>Age</h4></th>
+            <th>ADD</th>
+            <th>UPDATE</th>
+            <th>CLEAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input class="form-control" ng-model="contact.email" placeholder="Email"></td>
+            <td><input class="form-control" ng-model="contact.name" placeholder="Name"></td>
+            <td><input class="form-control" ng-model="contact.dob" placeholder="Date Of Birth"></td>
+            <td><input class="form-control" ng-model="contact.gender" placeholder="Gender"></td>
+            <td><input class="form-control" ng-model="contact.department" placeholder="Department"></td>
+            <td><input class="form-control" ng-model="contact.age" placeholder="Age"></td>
+
+            <td><button class="btn btn-primary" ng-click="addContact()"> Add Employee</button></td>
+            <td><button class="btn btn-info" ng-click="update()"> Update</button></td>
+            <td><button class="btn btn-info" ng-click="deselect()">Clear</td>
+          </tr>
+
+          <tr ng-repeat ="contact in organization">
+            <td> {{contact.email}} </td>
+            <td> {{contact.name}} </td>
+            <td> {{contact.dob}} </td>
+            <td> {{contact.gender}} </td>
+            <td> {{contact.department}} </td>
+            <td> {{contact.age}} </td>
+
+            <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
+            <td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="controllers/controller.js"></script>
+  </body>
+</html>
