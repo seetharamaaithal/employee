@@ -4,6 +4,7 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 
 var db = mongojs('organization', ['organization']);
+var port = process.env.PORT || 7777;
 
 app.use(express.static(__dirname + "/public"));
 
@@ -48,8 +49,7 @@ app.put('/organization/:id', function(req, res){
 	
 });
 
-app.listen(7777);
-console.log("Server running on port 7777");
+app.listen(port);
 
 
 
