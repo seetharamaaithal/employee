@@ -1,21 +1,21 @@
 {
-  "name": "application",
+  "name": "senthil-emp-app-project",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "dependencies": {
-    "express": "^4.13.3",
-    "body-parser": "^1.13.3",
-    "mongojs": "^1.3.0"
-  },
-  "devDependencies": {},
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "4.1.1"
+  "author": "Seetharama",
+  "license": "Mindtree",
+  "dependencies": {
+    "express": "^4.15.2",
+    "body-parser": "1.15.0",
+    "chalk": "1.1.1",
+    "mongoose": "4.4.4"
   },
-  "author": "Seetharama Aithal",
-  "license": "ISC"
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.1.0"
+  }
 }

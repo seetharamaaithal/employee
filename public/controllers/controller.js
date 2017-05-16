@@ -1,42 +1,37 @@
+var empApp = angular.module('empApp', []);
+empApp.controller('emp-app-controller', ['$scope', '$http', function($scope, $http) {
+  var updateView=function(){
+    $http.get('/employee').success(function(response) {
+      $scope.employees = response;
+      $scope.employee="";
+    });
+  };
 
-var app = angular.module('myApp', []);
+  updateView();
 
-app.controller('AppCtrl', function($scope, $http){
-	var refresh = function() {
-		$http.get('/organization').success(function(response){
-			$scope.organization = response;
-				$scope.contact= "";
-		});
-	}
+  $scope.addEmployee = function() {
+    $http.post('/employee', $scope.employee).success(function(response) {
+      updateView();
+    });
+  };
 
-	refresh();
+  $scope.removeEmployee = function(id) {
+    $http.delete('/employee/' + id).success(function(response) {
+        updateView();
+    });
+  };
 
-	$scope.addContact = function(){
-		$http.post('/organization', $scope.contact).success(function(response){
-			refresh();
-		});
-	};
+  $scope.editEmployee = function(id) {
+      console.log(id);
+      $http.get('/employee/' + id).success(function(response) {
+      $scope.employee = response;
+    });
+  };
 
-	$scope.remove = function(id){
-		$http.delete('/organization/' + id).success(function(response){
-			refresh();
-		});
-	};
-
-	$scope.edit = function(id){
-		console.log(id);
-		$http.get('/organization/' + id).success(function(response){
-			$scope.contact = response;
-		});
-	}
-
-	$scope.update = function(id){
-		$http.put('/organization/' + $scope.contact._id, $scope.contact).success(function(response){
-			refresh();
-		});
-	};
-
-	$scope.deselect = function(){
-		$scope.contact = "";
-	}
-});
+  $scope.updateEmployee = function() {
+    console.log($scope.employee._id);
+    $http.put('/employee/' + $scope.employee._id, $scope.employee).success(function(response) {
+     updateView();
+    });
+  };
+}]);
